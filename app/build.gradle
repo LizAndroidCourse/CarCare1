@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -26,8 +26,7 @@ repositories {
     // Check that you have the following line (if not, add it):
     google()  // Google's Maven repository
 }
-apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
+
 dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -36,6 +35,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation "com.google.android.material:material:1.1.0-alpha06"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.google.firebase:firebase-core:17.2.3'
     implementation 'com.google.firebase:firebase-messaging:20.1.2'
     implementation 'com.google.firebase:firebase-analytics:17.2.3'
@@ -46,5 +48,10 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.jakewharton:butterknife:6.1.0'
 
-
+    api 'com.google.dagger:dagger-android:2.17'
+    api 'com.google.dagger:dagger-android-support:2.17'
+    // Adds libraries defining annotations to only the compile classpath.
+    compileOnly 'com.google.dagger:dagger:version-number'
+    // Adds the annotation processor dependency to the annotation processor classpath.
+    annotationProcessor 'com.google.dagger:dagger-compiler:version-number'
 }
