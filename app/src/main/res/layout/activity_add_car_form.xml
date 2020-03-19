@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context="addCarForm">
+    tools:context=".AddCarForm">
     <TextView
         android:id="@+id/TextViewTitle"
         android:layout_width="315dp"
@@ -61,7 +61,6 @@
                 android:hint="Year of manufacture"
                 android:digits="0123456789"
                 android:fontFamily="@font/josefin_sans"
-                android:onClick="showDatePickerDialog"
                 android:inputType="textPersonName"
                 android:layout_width="fill_parent">
             </EditText>
@@ -70,6 +69,7 @@
                 android:id="@+id/EditTextTestMonth"
                 android:layout_height="wrap_content"
                 android:hint="Test Month"
+                android:digits="0123456789"
                 android:inputType="textPersonName"
                 android:layout_width="fill_parent">
             </EditText>

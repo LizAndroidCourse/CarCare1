@@ -11,7 +11,8 @@
         android:roundIcon="@color/colorPrimaryDark"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddCarForm"></activity>
+        <activity android:name=".GetUserName"></activity>
+        <activity android:name=".AddCarForm" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".VerifyPhoneActivity" />
         <activity android:name=".MainActivity">

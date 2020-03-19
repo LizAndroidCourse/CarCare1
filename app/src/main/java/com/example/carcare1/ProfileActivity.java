@@ -13,20 +13,18 @@ import com.google.gson.Gson;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    final String key =  "CAR";
-    TextView title;
-    Car car;
-    Gson gson;
-    String json;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        title = findViewById(R.id.car_name_title);
-        gson = new Gson();
-        json = getIntent().getStringExtra(key);
-        car = gson.fromJson(json,Car.class);
-        title.setText(car.getModel());
+        Button BTN_addCar = findViewById(R.id.BTN_addCar);
+        BTN_addCar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, AddCarForm.class);
+                startActivity(intent);
+            }
+        });
         Button BTN_gas = findViewById(R.id.BTN_Gas);
         BTN_gas.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +70,6 @@ public class ProfileActivity extends AppCompatActivity {
     }
     public void moveToGasScreen(){
         Intent intent = new Intent(this, ProfileActivity.class);
-        intent.putExtra("CAR",json);
         startActivity(intent);
         this.finish();
     }

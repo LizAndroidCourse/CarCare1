@@ -1,22 +1,22 @@
 package com.example.carcare1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.provider.CalendarContract;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -28,8 +28,6 @@ public class AddCarForm extends AppCompatActivity {
 
     //add firebase  Database stuff
     private FirebaseDatabase db;
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference myRef;
 
 
@@ -37,17 +35,17 @@ public class AddCarForm extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_car_form);
-        car = new Car();
-        car.setModel(findViewById(R.id.EditTextModel).toString());
-        car.setCar_number(Integer.parseInt(findViewById(R.id.EditTextCarNumber).toString()));
-        car.setKm(Integer.parseInt(findViewById(R.id.EditTextKM).toString()));
-        car.setMake(findViewById(R.id.EditTextMake).toString());
+
         OK_BTN = findViewById(R.id.BTN_Done);
         OK_BTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!((car.getCar_number()==0) &&(car.getCar_year()==0)&&(car.getMake().isEmpty())&&
+                addNewCarToCarList();
+                if(!((car.getCar_number() == 0) &&(car.getCar_year()==0)&&(car.getMake().isEmpty())&&
                         (car.getModel().isEmpty())&&(car.getTest_month()==0))) {
+                    if(carList==null){
+                        carList = new ArrayList<Car>();
+                    }
                     carList.add(car);
                     moveToVihicleMainPage(car);
                 }else{
@@ -64,13 +62,31 @@ public class AddCarForm extends AppCompatActivity {
                 }
             }
         });
-        mAuth = FirebaseAuth.getInstance();
-        db = FirebaseDatabase.getInstance();
-        myRef = db.getReference();
-        addToDatabase();
 
     }
 
+    public void addNewCarToCarList(){
+        car = new Car();
+        EditText editTextCarNumber = findViewById(R.id.EditTextCarNumber);
+        EditText editTextModel = findViewById(R.id.EditTextModel);
+        EditText editTextTestMonth = findViewById(R.id.EditTextTestMonth);
+        EditText editTextKM = findViewById(R.id.EditTextKM);
+        EditText editTextMake = findViewById(R.id.EditTextMake);
+        EditText editTextYear = findViewById(R.id.EditTextYear);
+        car.setModel(editTextModel.getText().toString().trim());
+         car.setCar_number(0);
+        try {
+            car.setCar_number(Integer.parseInt(editTextCarNumber.getText().toString().trim()));
+        } catch (NumberFormatException e) {
+            // Log error, change value of temperature, or do nothing
+        }
+//        car.setCar_number(Integer.parseInt(editTextCarNumber.getText().toString().trim()));
+        car.setTest_month(Integer.parseInt(editTextTestMonth.getText().toString().trim()));
+        car.setKm(Integer.parseInt(editTextKM.getText().toString().trim()));
+        car.setCar_year(Integer.parseInt(editTextYear.getText().toString().trim()));
+        car.setMake(editTextMake.getText().toString().trim());
+        addToDatabase();
+    }
 
     public void moveToVihicleMainPage(Car car) {
         Intent intent = new Intent(this, ProfileActivity.class);
@@ -79,11 +95,13 @@ public class AddCarForm extends AppCompatActivity {
         this.finish();
     }
     public void addToDatabase(){
-        Gson gson = new Gson();
-        String json = gson.toJson(carList);
         db = FirebaseDatabase.getInstance();
         myRef = db.getReference();
-        myRef.child("Profiles").child("Cars").setValue(json);
-
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String currentUserID = user.getUid();
+            myRef.child(currentUserID).child("Cars").setValue(car);
+            Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+            startActivity(intent);
+        }
     }
-}
+

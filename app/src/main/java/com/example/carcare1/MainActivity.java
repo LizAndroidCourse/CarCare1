@@ -3,6 +3,7 @@ package com.example.carcare1;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -23,12 +24,12 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             Intent intent;
-            if (user.getDisplayName() == "" || user.getDisplayName() == null) {
-                intent = new Intent(MainActivity.this, AddCarForm.class);
+            System.out.println("USERRRRRRRRR"+ user.getDisplayName());
+            if (user.getDisplayName().equals("") || user.getDisplayName() == null) {
+                intent = new Intent(MainActivity.this, GetUserName.class);
             } else {
                 intent = new Intent(MainActivity.this, ProfileActivity.class);
             }
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         } else {
             findViewById(R.id.buttonContinue).setOnClickListener(new View.OnClickListener() {

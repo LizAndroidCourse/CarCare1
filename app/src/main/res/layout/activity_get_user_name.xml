@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    tools:context=".GetUserName">
+
+    <TextView
+        android:id="@+id/tv_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Let's join us\nand start to take care of our car"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/josefin_sans"
+        android:layout_marginTop="60dp"/>
+
+    <TextView
+        android:id="@+id/tv_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please enter your nickname:"
+        android:textSize="17sp"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/josefin_sans"
+        android:layout_marginStart="25dp"
+        />
+
+    <EditText
+        android:id="@+id/nickname"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="nickname"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:padding="15dp"
+        android:inputType="textPersonName"
+        android:fontFamily="@font/josefin_sans"
+        android:background="@color/colorTransparent"
+        android:textSize="15sp"
+        />
+<Button
+    android:id="@+id/BTN_goToAddCar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorTransparent"
+    android:text="Go to add your first car!"
+    android:fontFamily="@font/josefin_sans"
+    />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="226dp"
+        app:srcCompat="@drawable/carcareicon" />
+
+</LinearLayout>
