@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".CarListActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="190dp"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/table_car"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".4" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/carcare_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CarCare"
+        android:textSize="50dp"
+        android:fontFamily="@font/josefin_sans"
+        android:typeface="monospace"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="40dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.162" />
+
+    <TextView
+        android:id="@+id/slogan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/carcare_main"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
+        android:textSize="15dp"
+        android:text="take care of your car"
+        android:typeface="monospace"
+        android:fontFamily="@font/josefin_sans"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+    <Button
+        android:id="@+id/BTN_add_car"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="add new car"
+        android:textSize="20dp"
+        android:background="@color/colorTransparent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/josefin_sans"
+        android:layout_marginBottom="150dp"/>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="286dp"
+        android:layout_height="117dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="11dp"
+        app:srcCompat="@drawable/carcareicon"
+        tools:layout_alignBottom="@id/slogan"
+        tools:layout_marginBottom="20dp" />
+</RelativeLayout>

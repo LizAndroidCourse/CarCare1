@@ -73,15 +73,14 @@ public class AddCarForm extends AppCompatActivity {
         EditText editTextKM = findViewById(R.id.EditTextKM);
         EditText editTextMake = findViewById(R.id.EditTextMake);
         EditText editTextYear = findViewById(R.id.EditTextYear);
-        car.setModel(editTextModel.getText().toString().trim());
          car.setCar_number(0);
         try {
             car.setCar_number(Integer.parseInt(editTextCarNumber.getText().toString().trim()));
         } catch (NumberFormatException e) {
-            // Log error, change value of temperature, or do nothing
+            // Log error, change value of car number, or do nothing
         }
-//        car.setCar_number(Integer.parseInt(editTextCarNumber.getText().toString().trim()));
         car.setTest_month(Integer.parseInt(editTextTestMonth.getText().toString().trim()));
+        car.setModel(editTextModel.getText().toString().trim());
         car.setKm(Integer.parseInt(editTextKM.getText().toString().trim()));
         car.setCar_year(Integer.parseInt(editTextYear.getText().toString().trim()));
         car.setMake(editTextMake.getText().toString().trim());
@@ -90,7 +89,7 @@ public class AddCarForm extends AppCompatActivity {
 
     public void moveToVihicleMainPage(Car car) {
         Intent intent = new Intent(this, ProfileActivity.class);
-        intent.putExtra("CAR_NAME", car.getModel()+ car.getMake());
+        intent.putExtra("CAR_NAME", car.getMake()+ " "+car.getModel());
         startActivity(intent);
         this.finish();
     }
@@ -98,8 +97,9 @@ public class AddCarForm extends AppCompatActivity {
         db = FirebaseDatabase.getInstance();
         myRef = db.getReference();
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            String currentUserID = user.getUid();
-            myRef.child(currentUserID).child("Cars").setValue(car);
+            String currentUserID = user.getPhoneNumber();
+            myRef.child("Users").child(currentUserID).child("Cars").child(car.getCar_number()+ "").setValue(car);
+            myRef.push();
             Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
             startActivity(intent);
         }

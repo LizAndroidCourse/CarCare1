@@ -24,11 +24,10 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             Intent intent;
-            System.out.println("USERRRRRRRRR"+ user.getDisplayName());
             if (user.getDisplayName().equals("") || user.getDisplayName() == null) {
                 intent = new Intent(MainActivity.this, GetUserName.class);
             } else {
-                intent = new Intent(MainActivity.this, ProfileActivity.class);
+                intent = new Intent(MainActivity.this, CarListActivity.class);
             }
             startActivity(intent);
         } else {

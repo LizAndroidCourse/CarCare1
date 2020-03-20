@@ -1,6 +1,8 @@
 package com.example.carcare1;
 
 
+import androidx.annotation.NonNull;
+
 public class Car {
     private String make;
     private String model;
@@ -61,7 +63,7 @@ public class Car {
         this.km = km;
     }
 
-    public void setMake(String name) {
+    public void setMake(String make) {
         this.make = make;
     }
 
@@ -71,5 +73,11 @@ public class Car {
 
     public void setModel(String model) {
         this.model = model;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return getCar_number()+" "+getMake()+" "+ getModel();
     }
 }

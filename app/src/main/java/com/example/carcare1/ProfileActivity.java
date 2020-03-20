@@ -1,22 +1,23 @@
 package com.example.carcare1;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-
 public class ProfileActivity extends AppCompatActivity {
 
+    String carName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        Intent i = getIntent();
+         carName = i.getStringExtra("CAR_NAME");
+        TextView TV_carName = findViewById(R.id.car_name_title);
+        TV_carName.setText(carName);
         Button BTN_addCar = findViewById(R.id.BTN_addCar);
         BTN_addCar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +74,12 @@ public class ProfileActivity extends AppCompatActivity {
         startActivity(intent);
         this.finish();
     }
-    public void moveToTestScreen(){}
+    public void moveToTestScreen(){
+        Intent intent = new Intent(this, ProfileActivity.class);
+        intent.putExtra("CAR_NAME", carName);
+        startActivity(intent);
+        this.finish();
+    }
     public void moveToAlertsScreen(){}
     public void moveToGarageScreen(){}
     public void moveToFoundGarageScreen(){}
