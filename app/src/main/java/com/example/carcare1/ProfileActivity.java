@@ -20,6 +20,7 @@ public class ProfileActivity extends AppCompatActivity implements Serializable {
         setContentView(R.layout.activity_profile);
        car = (Car)getIntent().getSerializableExtra("CAR");
         TextView TV_carName = findViewById(R.id.car_name_title);
+        System.out.println("CARRRR"+ car.toString());
         TV_carName.setText(car.getMake()+" "+ car.getModel());
         Button BTN_addCar = findViewById(R.id.BTN_addCar);
         BTN_addCar.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +58,7 @@ public class ProfileActivity extends AppCompatActivity implements Serializable {
                 moveToAlertsScreen();
             }
         });
+
         Button BTN_garage = findViewById(R.id.BTN_Garage);
         BTN_garage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +66,7 @@ public class ProfileActivity extends AppCompatActivity implements Serializable {
                 moveToGarageScreen();
             }
         });
+
         Button BTN_foundGarage = findViewById(R.id.BTN_foudGarag);
         BTN_foundGarage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +74,7 @@ public class ProfileActivity extends AppCompatActivity implements Serializable {
                 moveToFoundGarageScreen();
             }
         });
+
         Button BTN_financialReport = findViewById(R.id.BTN_financialReport);
         BTN_financialReport.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,12 +90,14 @@ public class ProfileActivity extends AppCompatActivity implements Serializable {
         this.finish();
     }
     public void moveToTestScreen(){
-        Intent intent = new Intent(this, ProfileActivity.class);
+        Intent intent = new Intent(this, TestAndInsurance.class);
         intent.putExtra("CAR",car);
         startActivity(intent);
         this.finish();
     }
     public void moveToAlertsScreen(){}
+
+
     public void moveToGarageScreen(){
         Intent intent = new Intent(this, Garage.class);
         intent.putExtra("CAR",car);
@@ -99,6 +105,8 @@ public class ProfileActivity extends AppCompatActivity implements Serializable {
         this.finish();
     }
     public void moveToFoundGarageScreen(){}
+
+
     public void moveToFinancialReportScreen(){
         Intent intent = new Intent(this, FinancialReport.class);
         intent.putExtra("CAR",car);

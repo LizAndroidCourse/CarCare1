@@ -15,6 +15,7 @@ import java.util.Map;
 public class FinancialReport extends AppCompatActivity {
 
     Car car;
+    Map<String,Integer> map;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,7 @@ public class FinancialReport extends AppCompatActivity {
         });
     }
     public void setCostTextView(){
-        Map<String,Integer> map = car.getMapFinanc();
+        map = car.getMapFinanc();
         TextView gas = findViewById(R.id.fuel_cost);
         TextView garage = findViewById(R.id.grage_cost);
         TextView test = findViewById(R.id.test_cost);
@@ -49,7 +50,16 @@ public class FinancialReport extends AppCompatActivity {
             test.setText(String.valueOf(map.get("Test")));
             insurance.setText(String.valueOf(map.get("Insurance")));
         }
+        setTotalCost();
     }
+    public void setTotalCost(){
+        int totalCost=0;
+        for (String key: map.keySet()) {
+            totalCost+= map.get(key);
+        }
+        TextView totalCost_Text =findViewById(R.id.total_cost);
+        totalCost_Text.setText(String.valueOf(totalCost));
+        }
     public void moveToProfileScreen(){
         Intent intent = new Intent(this, ProfileActivity.class);
         intent.putExtra("CAR",car);

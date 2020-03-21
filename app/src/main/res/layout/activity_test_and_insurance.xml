@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background"
-    tools:context=".Garage">
+    tools:context=".Refueling">
 
     <TextView
         android:id="@+id/car_name_title"
@@ -23,7 +23,7 @@
         android:id="@+id/tv_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ביקור במוסך"
+        android:text="טסט וביטוח"
         android:textSize="35dp"
         android:fontFamily="@font/josefin_sans"
         android:layout_marginStart="25dp"
@@ -42,12 +42,25 @@
         android:fontFamily="@font/josefin_sans"
         android:background="@color/colorTransparent"
         android:textSize="15sp" />
-
     <EditText
-        android:id="@+id/price_garage"
+        android:id="@+id/cost_test"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="כמה שילמת ?"
+        android:hint="כמה שילמת על טסט ורישיון רכב ?"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:padding="15dp"
+        android:fontFamily="@font/josefin_sans"
+        android:digits="0123456789"
+        android:background="@color/colorTransparent"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/cost_insurance"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="כמה שילמת על ביטוח (מקיף,חובה,צד ג') ?"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:padding="15dp"
@@ -76,7 +89,7 @@
             android:textColor="@android:color/white" />
 
         <Button
-            android:id="@+id/goBackGarage"
+            android:id="@+id/goBackTest"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/back"

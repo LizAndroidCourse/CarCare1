@@ -63,6 +63,9 @@ public class Car implements Serializable {
         return mapFinanc;
     }
     public int getSpecificCost(String name){
+        if(mapFinanc.get(name) == null){
+            return 0;
+        }
         return mapFinanc.get(name);
     }
     public void setMapFinanc(String id, int cost){

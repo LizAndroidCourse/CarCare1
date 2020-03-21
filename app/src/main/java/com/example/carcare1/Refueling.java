@@ -30,7 +30,6 @@ public class Refueling extends AppCompatActivity implements Serializable {
     private FirebaseDatabase db;
     private DatabaseReference myRef;
     Car car = new Car();
-    ArrayList<Car> carList;
 
 
     @Override
@@ -46,6 +45,13 @@ public class Refueling extends AppCompatActivity implements Serializable {
             public void onClick(View v) {
                 updateDataBaseKM();
                 updateDataBaseReport();
+                moveToProfileScreen();
+            }
+        });
+        Button Button = findViewById(R.id.goBackGas);
+        Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 moveToProfileScreen();
             }
         });
@@ -78,12 +84,10 @@ public void updateDataBaseReport(){
         cost = car.getSpecificCost("Gas");
     }
     cost+=current_cost;
-    System.out.println("COSTTT"+cost);
     car.setMapFinanc("Gas",cost);
     final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     String currentUserID = user.getPhoneNumber();
-    myRef.child("Users").child(currentUserID).child("Cars").
-            child(car.getCar_number() + "").child("mapFinanc").child("Gas").setValue(cost);
+    myRef.child("Users").child(currentUserID).child("Cars").child(car.getCar_number() + "").child("mapFinanc").child("Gas").setValue(cost);
     myRef.push();
 }
 public void moveToProfileScreen(){

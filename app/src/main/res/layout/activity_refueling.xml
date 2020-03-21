@@ -88,23 +88,21 @@
             android:text="סיימתי!"
             android:textColor="@android:color/white" />
 
-        <ImageButton
+        <Button
+            android:id="@+id/goBackGas"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/back"
-            android:layout_above="@id/swipeLeft"
+            android:background="@color/colorTransparent"
+            android:layout_below="@id/btn_done"
             android:layout_centerHorizontal="true"/>
-
-        <TextView
-            android:id="@+id/swipeLeft"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:fontFamily="@font/josefin_sans"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="20dp"/>
-
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/back"
+            android:background="@color/colorTransparent"
+            android:layout_below="@id/btn_done"
+            android:layout_centerHorizontal="true"/>
 
     </RelativeLayout>
 

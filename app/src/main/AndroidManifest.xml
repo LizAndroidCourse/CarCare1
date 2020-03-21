@@ -11,16 +11,11 @@
         android:roundIcon="@color/colorPrimaryDark"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Garage"></activity>
+        <activity android:name=".TestAndInsurance"></activity>
+        <activity android:name=".Garage" />
         <activity android:name=".FinancialReport" />
         <activity android:name=".Refueling" />
-        <activity android:name=".CarListActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".CarListActivity"/>
         <activity android:name=".GetUserName" />
         <activity android:name=".AddCarForm" />
         <activity android:name=".ProfileActivity" />
