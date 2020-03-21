@@ -19,9 +19,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-
-import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -30,10 +27,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
+
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarListActivity extends AppCompatActivity {
+public class CarListActivity extends AppCompatActivity implements Serializable {
 
     Button addNew_BTN ;
     AdapterCars adapter_cars;
@@ -94,7 +94,7 @@ public class CarListActivity extends AppCompatActivity {
 
     public void moveToVehicleScreen(Car car){
         Intent intent = new Intent(this, ProfileActivity.class);
-        intent.putExtra("CAR_NAME",car.getMake()+" "+ car.getModel());
+        intent.putExtra("CAR",car);
         startActivity(intent);
         this.finish();
 

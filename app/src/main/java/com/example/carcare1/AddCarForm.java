@@ -19,9 +19,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class AddCarForm extends AppCompatActivity {
+public class AddCarForm extends AppCompatActivity implements Serializable {
     Car car;
     ArrayList<Car> carList;
     Button OK_BTN;
@@ -44,7 +45,7 @@ public class AddCarForm extends AppCompatActivity {
                 if(!((car.getCar_number() == 0) &&(car.getCar_year()==0)&&(car.getMake().isEmpty())&&
                         (car.getModel().isEmpty())&&(car.getTest_month()==0))) {
                     if(carList==null){
-                        carList = new ArrayList<Car>();
+                        carList = new ArrayList<>();
                     }
                     carList.add(car);
                     moveToVihicleMainPage(car);
@@ -88,8 +89,8 @@ public class AddCarForm extends AppCompatActivity {
     }
 
     public void moveToVihicleMainPage(Car car) {
-        Intent intent = new Intent(this, ProfileActivity.class);
-        intent.putExtra("CAR_NAME", car.getMake()+ " "+car.getModel());
+        Intent intent = new Intent(this, Refueling.class);
+        intent.putExtra("CAR",car);
         startActivity(intent);
         this.finish();
     }

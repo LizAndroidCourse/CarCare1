@@ -11,6 +11,9 @@
         android:roundIcon="@color/colorPrimaryDark"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Garage"></activity>
+        <activity android:name=".FinancialReport" />
+        <activity android:name=".Refueling" />
         <activity android:name=".CarListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -7,23 +7,33 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class ProfileActivity extends AppCompatActivity {
+import com.google.gson.Gson;
 
-    String carName;
+import java.io.Serializable;
+
+public class ProfileActivity extends AppCompatActivity implements Serializable {
+
+    Car car;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        Intent i = getIntent();
-         carName = i.getStringExtra("CAR_NAME");
+       car = (Car)getIntent().getSerializableExtra("CAR");
         TextView TV_carName = findViewById(R.id.car_name_title);
-        TV_carName.setText(carName);
+        TV_carName.setText(car.getMake()+" "+ car.getModel());
         Button BTN_addCar = findViewById(R.id.BTN_addCar);
         BTN_addCar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ProfileActivity.this, AddCarForm.class);
                 startActivity(intent);
+            }
+        });
+        Button BTN_changeCar = findViewById(R.id.BTN_changeCar);
+        BTN_changeCar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveToCarListScreen();
             }
         });
         Button BTN_gas = findViewById(R.id.BTN_Gas);
@@ -61,27 +71,43 @@ public class ProfileActivity extends AppCompatActivity {
                 moveToFoundGarageScreen();
             }
         });
-        Button BTN_foundGasStation = findViewById(R.id.BTN_foundGasStation);
-        BTN_foundGasStation.setOnClickListener(new View.OnClickListener() {
+        Button BTN_financialReport = findViewById(R.id.BTN_financialReport);
+        BTN_financialReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moveToFoundGasStationScreen();
+                moveToFinancialReportScreen();
             }
         });
     }
     public void moveToGasScreen(){
-        Intent intent = new Intent(this, ProfileActivity.class);
+        Intent intent = new Intent(this, Refueling.class);
+        intent.putExtra("CAR",car);
         startActivity(intent);
         this.finish();
     }
     public void moveToTestScreen(){
         Intent intent = new Intent(this, ProfileActivity.class);
-        intent.putExtra("CAR_NAME", carName);
+        intent.putExtra("CAR",car);
         startActivity(intent);
         this.finish();
     }
     public void moveToAlertsScreen(){}
-    public void moveToGarageScreen(){}
+    public void moveToGarageScreen(){
+        Intent intent = new Intent(this, Garage.class);
+        intent.putExtra("CAR",car);
+        startActivity(intent);
+        this.finish();
+    }
     public void moveToFoundGarageScreen(){}
-    public void moveToFoundGasStationScreen(){}
+    public void moveToFinancialReportScreen(){
+        Intent intent = new Intent(this, FinancialReport.class);
+        intent.putExtra("CAR",car);
+        startActivity(intent);
+        this.finish();
+    }
+    public void moveToCarListScreen(){
+        Intent intent = new Intent(this, CarListActivity.class);
+        startActivity(intent);
+        this.finish();
+    }
 }

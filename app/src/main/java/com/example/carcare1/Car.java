@@ -3,13 +3,18 @@ package com.example.carcare1;
 
 import androidx.annotation.NonNull;
 
-public class Car {
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Car implements Serializable {
     private String make;
     private String model;
     private int car_year;
     private int test_month;
     private int km;
     private int car_number;
+    private Map<String, Integer> mapFinanc;
 
 
     public Car( String make,
@@ -24,9 +29,12 @@ public class Car {
         this.km =km;
         this.test_month = test_month;
         this.model=model;
+        this.mapFinanc = new HashMap<>();
     }
 
-    public Car(){}
+    public Car(){
+        this.mapFinanc = new HashMap<>();
+    }
     public String getModel() {
         return model;
     }
@@ -49,6 +57,16 @@ public class Car {
 
     public String getMake() {
         return make;
+    }
+
+    public Map<String,Integer> getMapFinanc(){
+        return mapFinanc;
+    }
+    public int getSpecificCost(String name){
+        return mapFinanc.get(name);
+    }
+    public void setMapFinanc(String id, int cost){
+        mapFinanc.put(id,cost);
     }
 
     public void setCar_number(int car_number) {
