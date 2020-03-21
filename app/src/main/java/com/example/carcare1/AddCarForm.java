@@ -48,7 +48,7 @@ public class AddCarForm extends AppCompatActivity implements Serializable {
                         carList = new ArrayList<>();
                     }
                     carList.add(car);
-                    moveToVihicleMainPage(car);
+
                 }else{
                     AlertDialog.Builder builder = new AlertDialog.Builder(AddCarForm.this);
                     builder.setMessage("Please fill right all the details")
@@ -101,8 +101,8 @@ public class AddCarForm extends AppCompatActivity implements Serializable {
             String currentUserID = user.getPhoneNumber();
             myRef.child("Users").child(currentUserID).child("Cars").child(car.getCar_number()+ "").setValue(car);
             myRef.push();
-            Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-            startActivity(intent);
+        moveToVihicleMainPage(car);
+
         }
     }
 

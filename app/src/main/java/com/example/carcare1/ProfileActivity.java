@@ -1,18 +1,24 @@
 package com.example.carcare1;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.google.gson.Gson;
+import android.widget.Toast;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 public class ProfileActivity extends AppCompatActivity implements Serializable {
-
+    PendingIntent pendingIntent;
     Car car;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +26,6 @@ public class ProfileActivity extends AppCompatActivity implements Serializable {
         setContentView(R.layout.activity_profile);
        car = (Car)getIntent().getSerializableExtra("CAR");
         TextView TV_carName = findViewById(R.id.car_name_title);
-        System.out.println("CARRRR"+ car.toString());
         TV_carName.setText(car.getMake()+" "+ car.getModel());
         Button BTN_addCar = findViewById(R.id.BTN_addCar);
         BTN_addCar.setOnClickListener(new View.OnClickListener() {
@@ -67,11 +72,11 @@ public class ProfileActivity extends AppCompatActivity implements Serializable {
             }
         });
 
-        Button BTN_foundGarage = findViewById(R.id.BTN_foudGarag);
+        Button BTN_foundGarage = findViewById(R.id.BTN_updateCar);
         BTN_foundGarage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moveToFoundGarageScreen();
+                moveToUpdateCarScreen();
             }
         });
 
@@ -95,7 +100,12 @@ public class ProfileActivity extends AppCompatActivity implements Serializable {
         startActivity(intent);
         this.finish();
     }
-    public void moveToAlertsScreen(){}
+    public void moveToAlertsScreen(){
+        Intent intent = new Intent(this, ListNotification.class);
+        intent.putExtra("CAR",car);
+        startActivity(intent);
+        this.finish();
+    }
 
 
     public void moveToGarageScreen(){
@@ -104,7 +114,13 @@ public class ProfileActivity extends AppCompatActivity implements Serializable {
         startActivity(intent);
         this.finish();
     }
-    public void moveToFoundGarageScreen(){}
+    public void moveToUpdateCarScreen(){
+        Intent intent = new Intent(this, FinancialReport.class);
+        intent.putExtra("CAR",car);
+        startActivity(intent);
+        this.finish();
+
+    }
 
 
     public void moveToFinancialReportScreen(){
@@ -117,5 +133,14 @@ public class ProfileActivity extends AppCompatActivity implements Serializable {
         Intent intent = new Intent(this, CarListActivity.class);
         startActivity(intent);
         this.finish();
+    }
+    @Override
+    protected void onStop () {
+        super .onStop() ;
+        Intent intent = new Intent(this, NotificationService.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(ProfileActivity.this, 0, intent, 0);
+        AlarmManager am = (AlarmManager)getSystemService(ALARM_SERVICE);
+        am.setRepeating(am.RTC_WAKEUP, System.currentTimeMillis(), am.INTERVAL_DAY, pendingIntent);
+        startService( intent) ;
     }
 }

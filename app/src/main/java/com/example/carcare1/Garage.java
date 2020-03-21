@@ -56,13 +56,14 @@ public class Garage extends AppCompatActivity implements Serializable {
 
     }
     public void updateDataBase() {
-        EditText kmStr = findViewById(R.id.Km);
-        int km = Integer.parseInt(kmStr.getText().toString().trim());
-        car.setKm(km);
         db = FirebaseDatabase.getInstance();
         myRef = db.getReference();
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String currentUserID = user.getPhoneNumber();
+        EditText kmStr = findViewById(R.id.Km);
+        int km = Integer.parseInt(kmStr.getText().toString().trim());
+        car.setKm(km);
+        myRef.child("Users").child(currentUserID).child("Cars").child(car.getCar_number() + "").child("lastKmBeforeGarage").setValue(car.getKm());
         myRef.child("Users").child(currentUserID).child("Cars").child(car.getCar_number() + "").child("km").setValue(car.getKm());
         myRef.push();
 

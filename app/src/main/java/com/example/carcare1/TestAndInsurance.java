@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -53,13 +54,17 @@ public class TestAndInsurance extends AppCompatActivity {
     }
     public void updateDataBase() {
         EditText kmStr = findViewById(R.id.Km);
+        EditText insuranceStr = findViewById(R.id.month_insurance);
+        int insurance_month = Integer.parseInt(insuranceStr.getText().toString().trim());
         int km = Integer.parseInt(kmStr.getText().toString().trim());
-        car.setKm(km);
         db = FirebaseDatabase.getInstance();
         myRef = db.getReference();
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String currentUserID = user.getPhoneNumber();
+        car.setKm(km);
+        car.setInsurance_month(insurance_month);
         myRef.child("Users").child(currentUserID).child("Cars").child(car.getCar_number() + "").child("km").setValue(car.getKm());
+        myRef.child("Users").child(currentUserID).child("Cars").child(car.getCar_number() + "").child("insurance month").setValue(insurance_month);
         myRef.push();
 
     }

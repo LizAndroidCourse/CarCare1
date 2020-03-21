@@ -6,17 +6,24 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@color/colorPrimaryDark"
+        android:icon="@drawable/carcareicon"
         android:label="@string/app_name"
         android:roundIcon="@color/colorPrimaryDark"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TestAndInsurance"></activity>
+        <activity android:name=".DeleteCar"></activity>
+        <activity android:name=".ListNotification" />
+        <activity android:name=".TestAndInsurance" />
         <activity android:name=".Garage" />
         <activity android:name=".FinancialReport" />
         <activity android:name=".Refueling" />
-        <activity android:name=".CarListActivity"/>
+        <activity android:name=".CarListActivity" />
         <activity android:name=".GetUserName" />
+        <activity android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".AddCarForm" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".VerifyPhoneActivity" />
@@ -28,9 +35,15 @@
             </intent-filter>
         </activity>
 
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+        <service
+            android:name=".NotificationService"
+            android:label="CarCare">
+            <intent-filter>
+                <action android:name="app.tutorialspoint.com.notifyme.NotificationService" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

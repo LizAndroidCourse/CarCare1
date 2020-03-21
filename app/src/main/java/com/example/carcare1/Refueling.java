@@ -61,11 +61,11 @@ public class Refueling extends AppCompatActivity implements Serializable {
     public void updateDataBaseKM() {
         EditText kmStr = findViewById(R.id.Km);
         int km = Integer.parseInt(kmStr.getText().toString().trim());
-        car.setKm(km);
         db = FirebaseDatabase.getInstance();
         myRef = db.getReference();
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String currentUserID = user.getPhoneNumber();
+        car.setKm(km);
         myRef.child("Users").child(currentUserID).child("Cars").child(car.getCar_number() + "").child("km").setValue(car.getKm());
         myRef.push();
 

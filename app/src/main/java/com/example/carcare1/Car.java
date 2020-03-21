@@ -12,8 +12,10 @@ public class Car implements Serializable {
     private String model;
     private int car_year;
     private int test_month;
+    private int insurance_month;
     private int km;
     private int car_number;
+    private int lastKmBeforeGarage;
     private Map<String, Integer> mapFinanc;
 
 
@@ -54,9 +56,15 @@ public class Car implements Serializable {
     public int getTest_month() {
         return test_month;
     }
+    public int getInsurance_month(){
+        return insurance_month;
+    }
 
     public String getMake() {
         return make;
+    }
+    public int getLastKmBeforeGarage(){
+        return lastKmBeforeGarage;
     }
 
     public Map<String,Integer> getMapFinanc(){
@@ -67,6 +75,12 @@ public class Car implements Serializable {
             return 0;
         }
         return mapFinanc.get(name);
+    }
+    public void setLastKmBeforeGarage(int num){
+        this.lastKmBeforeGarage = num;
+    }
+    public void setInsurance_month(int num){
+        this.insurance_month = num;
     }
     public void setMapFinanc(String id, int cost){
         mapFinanc.put(id,cost);

@@ -59,7 +59,7 @@ public class AdapterCars extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mItemClickListener.onItemClick(itemView, moveToMainPage(), getItem(moveToMainPage()));
+                    mItemClickListener.onItemClick(itemView, getAdapterPosition(), getItem(getAdapterPosition()));
                 }
             });
         }

@@ -69,6 +69,19 @@
         android:background="@color/colorTransparent"
         android:textSize="15sp" />
 
+    <EditText
+        android:id="@+id/month_insurance"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="מה חודש החידוש ביטוח שלך ?"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="15dp"
+        android:fontFamily="@font/josefin_sans"
+        android:digits="0123456789"
+        android:background="@color/colorTransparent"
+        android:textSize="15sp" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"

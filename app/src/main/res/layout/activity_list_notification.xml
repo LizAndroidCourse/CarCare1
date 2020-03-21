@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ListNotification">
+
+    <TextView
+        android:id="@+id/car_name_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="50sp"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/josefin_sans"
+        android:layout_marginTop="60dp"
+        />
+
+    <ListView
+        android:id="@+id/listNotification"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp"
+        android:layout_centerHorizontal="true"
+        android:layout_weight=".5"
+        android:layout_below="@id/car_name_title"
+        android:layout_marginBottom="100dp"
+        />
+
+
+    <Button
+        android:id="@+id/goBackNoti"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/back"
+        android:background="@color/colorTransparent"
+        android:layout_below="@id/listNotification"
+        android:layout_centerHorizontal="true"/>
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/back"
+        android:background="@color/colorTransparent"
+        android:layout_below="@id/listNotification"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>
