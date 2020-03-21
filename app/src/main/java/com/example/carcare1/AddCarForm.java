@@ -89,7 +89,7 @@ public class AddCarForm extends AppCompatActivity implements Serializable {
     }
 
     public void moveToVihicleMainPage(Car car) {
-        Intent intent = new Intent(this, Refueling.class);
+        Intent intent = new Intent(this, CarListActivity.class);
         intent.putExtra("CAR",car);
         startActivity(intent);
         this.finish();

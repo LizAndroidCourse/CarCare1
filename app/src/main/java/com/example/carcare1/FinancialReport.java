@@ -40,10 +40,6 @@ public class FinancialReport extends AppCompatActivity {
         TextView test = findViewById(R.id.test_cost);
         TextView insurance = findViewById(R.id.insurance_cost);
         if(map.isEmpty()) {
-            gas.setText(0);
-            garage.setText(0);
-            test.setText(0);
-            insurance.setText(0);
         } else {
             gas.setText(String.valueOf(map.get("Gas")));
             garage.setText(String.valueOf(map.get("Garage")));

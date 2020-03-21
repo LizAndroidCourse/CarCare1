@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".ProfileActivity">
+
+
+    <TextView
+        android:id="@+id/car_name_title"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:textSize="18pt"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/josefin_sans"
+
+        />
+    <TableLayout
+        android:id="@+id/table_menu"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_below="@id/car_name_title"
+        android:layout_height="500dp"
+        android:stretchColumns="0,1"
+        android:gravity="center">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+
+            >
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_column="0"
+                android:layout_margin="1dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/moon" />
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_column="1"
+                android:layout_margin="1dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/moon" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            >
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_column="0"
+                android:layout_margin="1dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/moon" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_column="1"
+                android:layout_margin="1dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/moon" />
+
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            >
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_column="0"
+                android:layout_margin="1dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/moon" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_column="1"
+                android:layout_margin="1dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/moon" />
+
+        </TableRow>
+
+    </TableLayout>
+    <TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_below="@id/car_name_title"
+        android:layout_height="500dp"
+        android:stretchColumns="0,1"
+        android:gravity="center">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+
+            >
+            <Button
+                android:id="@+id/BTN_Alerts"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@color/colorTransparent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_column="0"
+                android:text="התרעות
+                ועדכונים"
+                android:layout_margin="1dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/moon" />
+            <Button
+                android:id="@+id/BTN_Test"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@color/colorTransparent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_column="1"
+                android:layout_margin="1dp"
+                android:text="טסט
+                וביטוחים"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/moon" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            >
+
+            <Button
+                android:id="@+id/BTN_Garage"
+                android:background="@color/colorTransparent"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_column="0"
+                android:layout_margin="1dp"
+                android:text="ביקור במוסך"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/moon" />
+
+            <Button
+                android:id="@+id/BTN_Gas"
+                android:background="@color/colorTransparent"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_column="1"
+                android:layout_margin="1dp"
+                android:text="מילוי דלק"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/moon" />
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            >
+
+            <Button
+                android:id="@+id/BTN_updateCar"
+                android:background="@color/colorTransparent"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_column="0"
+                android:text="מחיקת רכב"
+                android:layout_margin="1dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/moon" />
+
+            <Button
+                android:id="@+id/BTN_financialReport"
+                android:background="@color/colorTransparent"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_column="1"
+                android:text= "דוח כספי "
+                android:layout_margin="1dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/moon" />
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/BTN_addCar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/table_menu"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:background="@color/colorTransparent"
+        android:text="Add Car"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/BTN_changeCar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/BTN_addCar"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="320dp"
+        android:layout_below="@id/table_menu"
+        android:background="@color/colorTransparent"
+        android:text="Change Car"
+        android:textSize="20dp" />
+</RelativeLayout>

@@ -115,7 +115,7 @@ public class ProfileActivity extends AppCompatActivity implements Serializable {
         this.finish();
     }
     public void moveToUpdateCarScreen(){
-        Intent intent = new Intent(this, FinancialReport.class);
+        Intent intent = new Intent(this, DeleteCar.class);
         intent.putExtra("CAR",car);
         startActivity(intent);
         this.finish();
