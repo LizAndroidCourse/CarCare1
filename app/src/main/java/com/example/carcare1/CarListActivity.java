@@ -58,6 +58,7 @@ public class CarListActivity extends AppCompatActivity implements Serializable {
 
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     carList.add(child.getValue(Car.class));
+                    System.out.println("CARRRRRRR"+ carList.get(0).toString());
                 }
                 renderCarList();
             }
@@ -78,7 +79,6 @@ public class CarListActivity extends AppCompatActivity implements Serializable {
         adapter_cars.SetOnItemClickListener(new AdapterCars.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position, Car car) {
-
                 goToVehicleScreen(car);
             }
         });

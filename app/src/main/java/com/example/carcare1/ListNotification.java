@@ -49,7 +49,10 @@ public void checkTestAndInsurance(){
     if(car.getTest_month() == Integer.parseInt(dateFormat.format(date))){
         notificationArrayList.add("לשלם על רישיון רכב");
         notificationArrayList.add("לעשות טסט לרכב");
+    }  if(car.getInsurance_month() == Integer.parseInt(dateFormat.format(date))){
+        notificationArrayList.add("לחדש את הביטוח , ואל תשכח לעדכן כמה עלה");
     }
+
 }
 public void checkGarage(){
         if(car.getKm()-car.getLastKmBeforeGarage() > 10000)

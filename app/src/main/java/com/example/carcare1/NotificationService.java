@@ -24,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Timer ;
 import java.util.TimerTask ;
@@ -32,6 +33,7 @@ public class NotificationService extends Service {
     private final static String default_notification_channel_id = "default" ;
     Timer timer ;
     TimerTask timerTask ;
+    long currentDate;
     String TAG = "Timers" ;
     int Your_X_SECS = 5 ;
     private FirebaseDatabase db;
@@ -85,7 +87,10 @@ public class NotificationService extends Service {
     public void startTimer () {
         timer = new Timer() ;
         initializeTimerTask() ;
-        timer .schedule( timerTask , 5000 , Your_X_SECS * 1000 ) ; //
+        currentDate = new Date().getTime();
+        timer .schedule( timerTask , 5000) ;
+
+        //
     }
     public void stopTimerTask () {
         if ( timer != null ) {
@@ -98,6 +103,7 @@ public class NotificationService extends Service {
             public void run () {
                 handler .post( new Runnable() {
                     public void run () {
+                        currentDate += Calendar.DATE*7;
                         createNotifications() ;
                     }
                 }) ;
@@ -127,8 +133,8 @@ public class NotificationService extends Service {
                     assert mNotificationManager != null;
                     mNotificationManager.createNotificationChannel(notificationChannel) ;
         }
-        mNotificationManager.notify(0 , mBuilder.build()) ;
-        stopTimerTask();
+        mNotificationManager.notify(1 , mBuilder.build()) ;
+                stopTimerTask();
     }
     private void createNotificationForInsurance(){
         Intent intent = new Intent(NotificationService.this, ProfileActivity.class);
@@ -154,7 +160,7 @@ public class NotificationService extends Service {
                 }
             }
         }
-        mNotificationManager.notify(0 , mBuilder.build()) ;
+        mNotificationManager.notify(2 , mBuilder.build()) ;
 //        stopTimerTask();
 
     }
@@ -173,6 +179,8 @@ public class NotificationService extends Service {
         for (int i=0;i<carList.size();i++){
             DateFormat dateFormat = new SimpleDateFormat("MM");
             Date date = new Date();
+            Log.d("CAR" , carList.get(i).toString());
+            Log.d("CAR", "       "+Integer.parseInt(dateFormat.format(date)) );
             if (Integer.parseInt(dateFormat.format(date)) == carList.get(i).getTest_month()){
                 if (android.os.Build.VERSION. SDK_INT >= android.os.Build.VERSION_CODES. O ) {
                     int importance = NotificationManager. IMPORTANCE_HIGH ;
