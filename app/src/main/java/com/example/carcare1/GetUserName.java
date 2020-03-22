@@ -47,12 +47,11 @@ public class GetUserName extends AppCompatActivity {
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
                             myRef.child("Users").child(user.getPhoneNumber()).setValue(nickname_str);
                             Intent intent = new Intent(GetUserName.this, AddCarForm.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
-                        }
+
                     }
                 });
 
